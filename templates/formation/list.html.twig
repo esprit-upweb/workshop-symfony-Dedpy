@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Table formations</title>
+    {% block stylesheets %}
+        <link href="{{ asset('style.css') }}" rel="stylesheet"/>
+    {% endblock %}
+</head>
+<body>
+<h3 align="center">
+    Madame {{ teacher }} - {{ variable }}
+</h3>
+<table align="center">
+
+    <thead>
+    <tr>
+        <th colspan="6">Formations</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            Reference
+        </td>
+        <td>
+            Titre
+        </td>
+        <td>
+            Description
+        </td>
+        <td>
+            Date debut
+        </td>
+        <td>
+            Date fin
+        </td>
+        <td>
+            N participant
+        </td>
+    </tr>
+    {% for i in formations %}
+        <tr>
+            <td>
+                {{ i.ref }}
+            </td>
+            <td>
+                {{ i.Titre|upper }}
+
+            </td>
+            <td>
+                {{ i.Description }}
+            </td>
+            <td>
+                {{ i.date_debut }}
+            </td>
+            <td>
+                {{ i.date_fin }}
+            </td>
+            <td>
+                {{ i.nb_participants }}
+            </td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+</body>
+</html>
+
+
+
+

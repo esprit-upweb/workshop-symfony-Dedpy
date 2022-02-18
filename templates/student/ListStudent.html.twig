@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Liste des etudiants</title>
+    {% block stylesheets %}
+        <link href="{{ asset('style.css') }}" rel="stylesheet"/>
+    {% endblock %}
+</head>
+<body>
+<table align="center">
+
+    <thead>
+    <tr>
+        <th colspan="6">Students</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            id
+        </td>
+        <td>
+            Username
+        </td>
+        <td>
+            Email
+        </td>
+        <td>
+            Moyenne
+        </td>
+        <td>
+            Action
+        </td>
+    </tr>
+    {% for i in etudiants %}
+        <tr>
+            <td>
+                {{ i.id }}
+            </td>
+            <td>
+                {{ i.username|upper }}
+
+            </td>
+            <td>
+                {{ i.email }}
+            </td>
+            <td>
+                {{ i.moyenne }}
+            </td>
+            <td>
+                <a href="{{ path('deleteListStudent',{'id':i.id}) }}">
+                    Supprimer
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+</body>
+</html>
+
+
+
+
