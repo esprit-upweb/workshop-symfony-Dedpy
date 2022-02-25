@@ -10,3 +10,5 @@
 7. migration (php bin/console make:migration)
 8. Liste de migration (php bin/console doctrine:migrations:list)
 9. Mise a jour base de donnee (php bin/console doctrine:migrations:migrate)
+10. Creer un formulaire (php bin/console make:form)
+11. Clear cache (php bin/console cache:clear --env=dev --no-debug)

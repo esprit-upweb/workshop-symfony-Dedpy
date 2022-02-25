@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Student;
+use App\Form\StudentType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class StudentController extends AbstractController
 {
@@ -31,7 +34,7 @@ class StudentController extends AbstractController
 
     /**
      * @param $id
-     * @Route ("deleteListStudent/{id}",name="deleteListStudent")
+     * @Route ("/deleteListStudent/{id}",name="deleteListStudent")
      */
     public function deleteListStudent($id){
         $etudient = $this->getDoctrine()->getRepository(Student::class)->find($id);
@@ -40,5 +43,37 @@ class StudentController extends AbstractController
         $em->flush();
         return $this->redirectToRoute("liststudent");
     }
+
+    /**
+     * @Route ("/addStudent",name="addstudent")
+     */
+public function addStudent(Request $request){
+
+    $student = new Student();
+    $form = $this->createForm(StudentType::class,$student);
+    $form->handleRequest($request);
+    if ( $form->isSubmitted()){
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($student);
+        $em->flush();
+        return $this->redirectToRoute("liststudent");
+    }
+        return $this->render("student/add.html.twig", array("formStudent"=>$form->createView()));
+}
+    /**
+     * @Route ("/updateStudent/{$id}",name="updateStudent")
+     */
+    public function updateStudent(Request $request, $id){
+        $student = $this->getDoctrine()->getRepository(Student::class)->find($id);
+        $form = $this->createForm(StudentType::class,$student);
+        $form->handleRequest($request);
+        if ( $form->isSubmitted()){
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute("liststudent");
+        }
+        return $this->render("student/update.html.twig", array("formStudent"=>$form->createView()));
+    }
+
 
 }
