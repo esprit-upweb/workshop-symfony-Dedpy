@@ -61,7 +61,7 @@ public function addStudent(Request $request){
         return $this->render("student/add.html.twig", array("formStudent"=>$form->createView()));
 }
     /**
-     * @Route ("/updateStudent/{$id}",name="updateStudent")
+     * @Route ("/updateStudent/{id}",name="updateStudent")
      */
     public function updateStudent(Request $request, $id){
         $student = $this->getDoctrine()->getRepository(Student::class)->find($id);

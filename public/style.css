@@ -1,8 +1,10 @@
 table,
 td {
-    border: 1px solid #333;
-}
+    border: 1px solid #FFFFFF;
 
+}
+element.style {
+    color: white;}
 thead,
 tfoot {
     background-color: #333;
@@ -10,7 +12,7 @@ tfoot {
 }
 body {
     align-items: center;
-    background-color: #000;
+    background-color: green;
     display: flex;
     justify-content: center;
     height: 100vh;
